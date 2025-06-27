@@ -1,0 +1,325 @@
+
+/* Variáveis */
+$primary: #0d6efd;
+$dark: #212529;
+$light: #f8f9fa;
+
+/* Mixins */
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+    transition: $property $duration $timing;
+}
+
+/* Base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 56px;
+    background-color: #f5f5f5;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 0;
+
+    .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        @include transition;
+
+        &:hover {
+            transform: translateY(-2px);
+        }
+    }
+
+    .nav-link {
+        padding: 0.5rem 1rem;
+        @include transition;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &.active {
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        &:hover {
+            color: rgba(255, 255, 255, 0.85);
+            transform: translateY(-1px);
+        }
+
+        i {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+/* Conteúdo Principal */
+.main-content {
+    min-height: calc(100vh - 160px);
+}
+
+.hero-section {
+    margin-top: 2rem;
+}
+
+/* Carrossel */
+.event-carousel {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    .carousel-item {
+        cursor: pointer;
+        @include transition;
+
+        &:hover {
+            opacity: 0.9;
+        }
+
+        img {
+            height: 400px;
+            object-fit: cover;
+        }
+    }
+
+    .carousel-caption {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 0.5rem;
+        padding: 1rem;
+    }
+}
+
+/* Overlay de Login */
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .overlay-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        max-width: 500px;
+        text-align: center;
+        animation: fadeIn 0.3s ease-out;
+
+        h3 {
+            color: $dark;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            min-width: 120px;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sidebar */
+.sidebar-events {
+    .sidebar-title {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid $primary;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .event-card {
+        background: white;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        @include transition;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            height: 150px;
+            width: 100%;
+            object-fit: flex;
+        }
+
+        .event-card-body {
+            padding: 1rem;
+
+            h5 {
+                margin-bottom: 0.5rem;
+            }
+
+            .text-muted {
+                color: #6c757d;
+            }
+        }
+    }
+}
+
+/* Seção de Conteúdo */
+.content-section {
+    margin: 3rem 0;
+
+    .section-title {
+        position: relative;
+        padding-bottom: 0.75rem;
+        margin-bottom: 2rem;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: $primary;
+        }
+    }
+
+    .unauthenticated-content {
+        background: white;
+        border-radius: 0.5rem;
+        padding: 3rem 2rem;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+
+        h2 {
+            color: $dark;
+        }
+
+        .lead {
+            color: #6c757d;
+        }
+
+        .btn {
+            min-width: 150px;
+        }
+    }
+
+    .event-card {
+        background: white;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        @include transition;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-card-body {
+            padding: 1.5rem;
+
+            h5 {
+                margin-bottom: 0.75rem;
+            }
+
+            p {
+                color: #6c757d;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+/* Footer */
+.footer {
+    a {
+        color: rgba(255, 255, 255, 0.7);
+        @include transition;
+
+        &:hover {
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    h5 {
+        margin-bottom: 1.25rem;
+        position: relative;
+        padding-bottom: 0.75rem;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: $primary;
+        }
+    }
+
+    .social-links {
+        a {
+            font-size: 1.25rem;
+            display: inline-block;
+            @include transition;
+
+            &:hover {
+                transform: translateY(-3px);
+            }
+        }
+    }
+}
+
+/* Responsividade */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding: 1rem 0;
+    }
+
+    .event-carousel .carousel-item img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body {
+        padding-top: 52px;
+    }
+
+    .content-section .unauthenticated-content {
+        padding: 2rem 1rem;
+
+        .d-flex {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+}

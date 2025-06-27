@@ -1,0 +1,142 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <i class="bi bi-calendar-event me-2"></i>SeekEvents
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">
+            <i class="bi bi-house-door"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollToFooter()" style="cursor: pointer;" title="Sobre">
+            <i class="bi bi-info-circle"></i> Sobre
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()" style="cursor: pointer;">
+            <i class="bi bi-box-arrow-right"></i> Sair
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="main-content">
+  <div class="container mt-5 pt-4">
+    <div class="usuariologado mb-4">
+      <h1>Seja bem-vindo, {{usuariologado}}</h1> 
+    </div>
+
+    <!-- Carrossel de Eventos em Destaque -->
+    <div class="mb-5" *ngIf="!isLoading && featuredEvents.length > 0">
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let event of featuredEvents">
+          <div class="carousel-image-container">
+            <img [src]="event.caeima" class="d-block w-100" [alt]="event.caenom">
+          </div>
+          <div class="carousel-caption">
+            <h3>{{event.caenom}}</h3>
+            <p>{{event.caedes | truncate: 100}}</p>
+            <button class="btn btn-primary" (click)="viewEventDetails(event.caeide)">
+              Ver Detalhes
+            </button>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+
+    <!-- Categorias -->
+    <div class="categories mb-5 text-center" *ngIf="!isLoading">
+      <h3 class="mb-4">Categorias de Eventos</h3>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <button *ngFor="let category of categories" class="btn btn-outline-primary"
+          (click)="filterByCategory(category.nome)">
+          <i class="bi {{category.icon}}"></i> {{category.nome}}
+        </button>
+      </div>
+    </div>
+
+    <!-- Lista de Eventos -->
+    <div class="row" *ngIf="isLoading">
+      <div class="col-12 text-center my-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Carregando...</span>
+        </div>
+        <p class="mt-2">Carregando eventos...</p>
+      </div>
+    </div>
+
+    <div class="row g-4" *ngIf="!isLoading">
+      <div class="col-12">
+        <h4 class="mb-4"><i class="bi bi-calendar-event"></i> Próximos Eventos</h4>
+      </div>
+
+      <div class="col-md-6 col-xl-4" *ngFor="let event of pagedEvents">
+        <div class="card h-100">
+          <img [src]="event.caeima" class="card-img-top" [alt]="event.caenom">
+          <div class="card-body">
+            <h5 class="card-title">{{ event.caenom }}</h5>
+            <p class="card-text">{{ event.caedes | truncate: 150 }}</p>
+            <p class="text-muted">
+              <i class="bi bi-calendar"></i> {{ event.caedat | date:'dd/MM/yyyy' }}
+            </p>
+            <button class="btn btn-primary w-100" (click)="viewEventDetails(event.caeide)">
+              Ver Detalhes
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 mt-4" *ngIf="allEvents.length === 0">
+        <div class="alert alert-info">
+          Nenhum evento encontrado. Volte mais tarde!
+        </div>
+      </div>
+    </div>
+
+    <!-- Paginação -->
+    <app-pagination 
+      *ngIf="!isLoading && allEvents.length > 0"
+      [currentPage]="currentPage"
+      [itemsPerPage]="itemsPerPage"
+      [totalItems]="totalItems"
+      (pageChanged)="onPageChange($event)">
+    </app-pagination>
+  </div>
+</main>
+
+<footer class="footer bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h5>Sobre a SeekEvents</h5>
+        <p>Conectamos pessoas aos melhores eventos da sua região.</p>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h5>Contato</h5>
+        <p><i class="bi bi-envelope"></i> contato&#64;seekevents.com</p>
+        <p><i class="bi bi-telephone"></i> (11) 1234-5678</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Redes Sociais</h5>
+        <div class="social-links">
+          <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-twitter-x"></i></a>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4">
+    <div class="text-center">
+      <p class="mb-0">© 2025 SeekEvents. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>

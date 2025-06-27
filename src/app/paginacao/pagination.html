@@ -1,0 +1,27 @@
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="previousPage()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        <li *ngIf="pages[0] > 1" class="page-item disabled">
+            <span class="page-link">...</span>
+        </li>
+
+        <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+            <a class="page-link" (click)="goToPage(page)">{{page}}</a>
+        </li>
+
+        <li *ngIf="pages[pages.length - 1] < totalPages" class="page-item disabled">
+            <span class="page-link">...</span>
+        </li>
+
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link" (click)="nextPage()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

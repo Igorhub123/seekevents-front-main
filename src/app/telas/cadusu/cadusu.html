@@ -1,0 +1,76 @@
+<main>
+  <div class="formulario">
+    <div class="voltar">
+      <a routerLink="/login"><i class="bi bi-arrow-left fs-1"></i></a>
+    </div>
+
+    <form (ngSubmit)="salvar()">
+      <h1>Cadastro de Usuário</h1>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="cadNome">Nome</label>
+          <input name="cdunom" type="text" id="cadNome" placeholder="Digite seu Nome"
+            [(ngModel)]="usuario.cdunom" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="cadCpf">CPF</label>
+          <input name="cducpf" type="text" id="cadCpf" placeholder="Digite seu CPF"
+            [(ngModel)]="usuario.cducpf" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="cadEmail">Email</label>
+          <input name="cduema" type="email" id="cadEmail" placeholder="Digite seu Email"
+            [(ngModel)]="usuario.cduema" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="cadSenha">Senha</label>
+          <input name="cdusen" type="password" id="cadSenha" placeholder="Digite sua Senha"
+            [(ngModel)]="usuario.cdusen" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Perfil</label>
+        <select name="cduper" [(ngModel)]="usuario.cduper" required>
+          <option [ngValue]="null" disabled selected>Selecione seu Perfil</option>
+          <option *ngFor="let perfil of perfis" [ngValue]="perfil.cdpide">
+            {{ perfil.cdpdes }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="cadfac">Link do Facebook</label>
+        <input name="cdufac" type="url" id="cadfac" placeholder="Digite seu Link do Facebook"
+          [(ngModel)]="usuario.cdufac">
+      </div>
+
+      <div class="form-group">
+        <label for="cadins">Link do Instagram</label>
+        <input name="cduins" type="url" id="cadins" placeholder="Digite seu Link do Instagram"
+          [(ngModel)]="usuario.cduins">
+      </div>
+
+      <div class="form-group">
+        <label for="cadtel">Telefone</label>
+        <input name="cdutel" type="tel" id="cadtel" placeholder="Digite seu Telefone"
+          [(ngModel)]="usuario.cdutel">
+      </div>
+
+      <div class="d-flex justify-content-center mt-3">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </div>
+
+      <p class="text-center mt-3">Já possui conta?</p>
+      <div class="text-center">
+        <a routerLink="/login">Faça login</a>
+      </div>
+    </form>
+  </div>
+
+  <div class="imagem"></div>
+</main>

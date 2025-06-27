@@ -1,0 +1,87 @@
+<div class="event-details-container">
+  <div class="container py-5">
+    <!-- Botão de voltar -->
+    <button class="btn btn-outline-secondary mb-4" (click)="goBack()">
+      <i class="bi bi-arrow-left"></i> Voltar
+    </button>
+
+    <!-- Cabeçalho do Evento -->
+    <div class="row mb-5">
+      <div class="col-lg-8">
+        <h1 class="display-4 mb-3">{{ event?.caenom }}</h1>
+        <div class="d-flex align-items-center mb-3">
+          <span class="badge bg-primary me-2">
+            <i class="bi bi-calendar"></i> {{ event?.caedat | date:'dd/MM/yyyy' }}
+          </span>
+          <span class="badge bg-success">
+            <i class="bi bi-clock"></i> {{ event?.caehor | date:'HH:mm' }}
+          </span>
+        </div>
+        <p class="lead">{{ event?.caedes }}</p>
+      </div>
+      <div class="col-lg-4">
+        <img [src]="event?.caeima" [alt]="event?.caenom" class="img-fluid rounded shadow">
+      </div>
+    </div>
+
+    <!-- Detalhes do Evento -->
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h3 class="card-title"><i class="bi bi-info-circle"></i> Sobre o Evento</h3>
+            <div [innerHTML]="event?.caedet" class="event-description"></div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-body">
+            <h3 class="card-title"><i class="bi bi-geo-alt"></i> Localização</h3>
+            <p>{{ event?.caeloc }}</p>
+            <div class="ratio ratio-16x9">
+
+              <div class="bg-light d-flex align-items-center justify-content-center">
+                <i class="bi bi-map display-4 text-muted"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card sticky-top" style="top: 20px;">
+          <div class="card-body">
+            <h3 class="card-title"><i class="bi bi-ticket-perforated"></i> Ingressos</h3>
+
+            <div class="d-grid gap-2 mb-3">
+              <button class="btn btn-primary btn-lg" (click)="buyTicket()">
+                <i class="bi bi-cart3"></i> Comprar Ingresso
+              </button>
+            </div>
+
+            <div class="event-info">
+              <h5><i class="bi bi-info-circle"></i> Informações</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <i class="bi bi-calendar-event"></i> Data: {{ event?.caedat | date:'fullDate' }}
+                </li>
+                <li class="list-group-item">
+                  <i class="bi bi-clock"></i> Horário: {{ event?.caehor | date:'HH:mm' }}
+                </li>
+                <li class="list-group-item">
+                  <i class="bi bi-geo-alt"></i> Local: {{ event?.caeloc }}
+                </li>
+                <li class="list-group-item">
+                  <i class="bi bi-people"></i> Vagas: {{ event?.caevag }} disponíveis
+                </li>
+                <li class="list-group-item">
+                  <i class="bi bi-cash-stack"></i> Preço: {{ event?.caepre | currency:'BRL' }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

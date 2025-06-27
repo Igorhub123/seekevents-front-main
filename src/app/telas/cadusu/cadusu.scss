@@ -1,0 +1,107 @@
+main {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  overflow: hidden;
+
+  .imagem {
+    background-image: url("/assets/imagem/evento1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 50%;
+    height: 100vh;
+    border-radius: 100px 0 0 100px;
+  }
+
+  .formulario {
+    width: 50%;
+    height: 100vh;
+    padding: 20px;
+    overflow-y: auto; // scroll vertical quando o conteúdo passa da altura
+    display: flex;
+    flex-direction: column;
+
+    .voltar {
+      width: 100%;
+      margin-bottom: 10px;
+
+      i {
+        color: blue;
+      }
+    }
+
+    form {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+
+      h1 {
+        text-align: center;
+        color: blue;
+        margin-bottom: 20px;
+      }
+
+      .row {
+        display: flex;
+        gap: 15px;
+
+        .form-group {
+          flex: 1;
+        }
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+
+        label {
+          color: blue;
+          margin-bottom: 5px;
+          display: block;
+        }
+
+        input,
+        select {
+          width: 100%;
+          padding: 0.5rem;
+          border: 1px solid blue;
+          border-radius: 4px;
+          color: blue;
+
+          &::placeholder {
+            color: blue;
+            opacity: 1;
+          }
+
+          &:focus {
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+          }
+        }
+      }
+
+      button {
+        width: 100%;
+        border: 1px solid blue;
+        background-color: #0d6efd;
+        color: white;
+      }
+
+      p,
+      a {
+        color: blue;
+      }
+
+      a {
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

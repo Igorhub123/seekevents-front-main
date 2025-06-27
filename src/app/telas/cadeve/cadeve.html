@@ -1,0 +1,80 @@
+<main>
+    <div class="mb-4">
+        <img src="assets/imagem/Evento05.png" class="img-fluid rounded" alt="Banner lateral 1">
+    </div>
+
+    <div class="conteudo-principal">
+        <div class="formulario">
+            <form (ngSubmit)="salvar()">
+                <h1>Cadastro de Evento</h1>
+
+                <div class="mb-1">
+                    <label for="caenom" class="form-label">Nome do Evento</label>
+                    <input name="caenom" type="text" class="form-control" id="caenom"
+                        placeholder="Digite o nome do evento" [(ngModel)]="evento.caenom">
+                </div>
+
+                <div class="mb-1">
+                    <label for="caedes" class="form-label">Descrição do Evento</label>
+                    <textarea name="caedes" class="form-control" id="caedes" placeholder="Digite a descrição"
+                        [(ngModel)]="evento.caedes"></textarea>
+                </div>
+
+                <div class="mb-1">
+                    <label for="caedat" class="form-label">Data do Evento</label>
+                    <input name="caedat" type="date" class="form-control" id="caedat" [(ngModel)]="evento.caedat">
+                </div>
+
+                <div class="mb-1">
+                    <label for="caeima" class="form-label">Imagem de Divulgação (URL)</label>
+                    <input name="caeima" type="text" class="form-control" id="caeima" placeholder="URL da imagem"
+                        [(ngModel)]="evento.caeima">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Categoria do Evento</label>
+                    <select class="form-select" [(ngModel)]="evento.cacecev" name="cacecev">
+                        <option [ngValue]="null" disabled selected>Selecione</option>
+                        @for (cat of categorias; track cat.cevide) {
+                        <option [ngValue]="cat.cevide">{{ cat.cevdes }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Endereço</label>
+                    <select class="form-select" [(ngModel)]="evento.caeend" name="caeend">
+                        <option [ngValue]="null" disabled selected>Selecione</option>
+                        @for (end of enderecos; track end.id) {
+                        <option [ngValue]="end.id">{{ end.descricao }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tabela de Divulgação</label>
+                    <select class="form-select" [(ngModel)]="evento.caetad" name="caetad">
+                        <option [ngValue]="null" disabled selected>Selecione</option>
+                        @for (tab of tabelas; track tab.tadide) {
+                        <option [ngValue]="tab.tadide">{{ tab.taddes }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Forma de Pagamento</label>
+                    <select class="form-select" [(ngModel)]="evento.caefpa" name="caefpa">
+                        <option [ngValue]="null" disabled selected>Selecione</option>
+                        @for (pag of pagamentos; track pag.id) {
+                        <option [ngValue]="pag.id">{{ pag.descricao }}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-primary">Cadastrar Evento</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

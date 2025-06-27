@@ -1,0 +1,46 @@
+<main>
+    <div class="formulario">
+        <div class="voltar">
+            <a routerLink="/inicial"><i class="bi bi-arrow-left fs-1" style="color: blue;"></i></a>
+        </div>
+        <form (ngSubmit)="login()">
+            <h1>Login</h1>
+
+            <!-- Campo Email -->
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input name="email" type="email" class="form-control" id="loginEmail" placeholder="Digite seu email"
+                    [(ngModel)]="usuario.email" required>
+            </div>
+
+            <!-- Campo Senha -->
+            <div class="form-group">
+                <label for="loginSenha">Senha</label>
+                <input name="senha" type="password" class="form-control" id="loginSenha" placeholder="Digite sua senha"
+                    [(ngModel)]="usuario.senha" required>
+            </div>
+
+            <!-- Mensagem de Erro -->
+            <div *ngIf="mensagemErro" class="alert alert-danger mt-2">
+                {{ mensagemErro }}
+            </div>
+
+            <!-- Botão Entrar -->
+            <div class="d-flex justify-content-center mt-3">
+                <button type="submit" class="btn btn-primary" [disabled]="carregando">
+                    <span *ngIf="!carregando">Entrar</span>
+                    <span *ngIf="carregando">
+                        <span class="spinner-border spinner-border-sm" role="status"></span>
+                        Carregando...
+                    </span>
+                </button>
+            </div>
+
+            <p>Não possui conta?</p>
+            <nav>
+                <a routerLink="/cadusu">Cadastra-se</a>
+            </nav>
+        </form>
+    </div>
+    <div class="imagem"></div>
+</main>

@@ -1,0 +1,40 @@
+.popup-cadastro {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 280px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    z-index: 9999;
+
+    p {
+        margin-bottom: 12px;
+        font-weight: 500;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .fechar-popup {
+        position: absolute;
+        top: 6px;
+        right: 8px;
+        background: transparent;
+        border: none;
+        font-size: 1.2rem;
+        color: #666;
+        cursor: pointer;
+
+        i {
+            pointer-events: none; // evita conflito com clique
+        }
+
+        &:hover {
+            color: #000;
+        }
+    }
+}

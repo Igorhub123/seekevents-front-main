@@ -1,0 +1,10 @@
+<div class="popup-cadastro" *ngIf="mostrarPopup">
+    <button class="fechar-popup" (click)="fecharPopup()" title="Fechar">
+        <i class="bi bi-x-lg"></i>
+    </button>
+
+    <p>Deseja cadastrar sua empresa?
+        Cadastre-se e divulgue seus eventos!
+    </p>
+    <button class="btn btn-primary" (click)="irParaCadastro()">Cadastrar Empresa</button>
+</div>
